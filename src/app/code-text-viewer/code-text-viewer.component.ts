@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CodeTextViewerComponent implements OnInit {
 
   @Input()
-  public code: string = "public class DeineMutter\n{\n    DuHure\n}"
+  public code?: string;
 
   constructor() { }
 

@@ -4,6 +4,27 @@
       <span>po-code-gen</span>
     </mat-toolbar>
     <div class="p-4 border-r">
+      <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Output Configuration
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="flex flex-col">
+            <mat-checkbox #generateImplementation checked="true">Generate implementation</mat-checkbox>
+            <mat-checkbox #generateInterface checked="false">Generate interface</mat-checkbox>
+            <mat-checkbox #generateFactoryMethod checked="false">Generate factory method</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Variable Settings
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
   <div class="grid grid-rows-[min-content,auto] h-full">
@@ -11,7 +32,18 @@
       <span>output</span>
     </mat-toolbar>
     <div class="p-4 border-l">
-      <po-code-text-viewer></po-code-text-viewer>
+      <div class="border-b last:border-none" *ngIf="generateImplementation.checked">
+        <h1>Implementation:</h1>
+        <po-code-text-viewer [code]="implementationCode"></po-code-text-viewer>
+      </div>
+      <div class="border-b last:border-none" *ngIf="generateInterface.checked">
+        <h1>Interface:</h1>
+        <po-code-text-viewer [code]="interfaceCode"></po-code-text-viewer>
+      </div>
+      <div class="border-b last:border-none" *ngIf="generateFactoryMethod.checked">
+        <h1>Factory method:</h1>
+        <po-code-text-viewer [code]="factoryMethodCode"></po-code-text-viewer>
+      </div>
     </div>
   </div>
 </div>

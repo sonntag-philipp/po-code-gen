@@ -1,1 +1,4 @@
-<p class="whitespace-pre-wrap font-mono">{{ code }}</p>
+<p *ngIf="code; else codeNotSet" class="whitespace-pre-wrap font-mono bg-slate-200 p-2 rounded">{{ code }}</p>
+<ng-template #codeNotSet>
+  <p class="text-center">Code not set</p>
+</ng-template>

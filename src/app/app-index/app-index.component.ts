@@ -7,6 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppIndexComponent implements OnInit {
 
+  public get interfaceCode(): string {
+    return "public interface ITestKlasse\n{\n    Backfisch;\n}"
+  }
+
+  public get implementationCode(): string {
+    return "public class TestKlasse\n{\n    Backfisch;\n}"
+  }
+
+  public get factoryMethodCode(): string {
+    return "public class TestKlasse\n{\n    Backfisch;\n}"
+  }
+
   constructor() { }
 
   ngOnInit(): void {
