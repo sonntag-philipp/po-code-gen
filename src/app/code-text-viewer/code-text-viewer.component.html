@@ -1,4 +1,9 @@
-<p *ngIf="code; else codeNotSet" class="whitespace-pre-wrap font-mono bg-slate-200 p-2 rounded">{{ code }}</p>
+<div *ngIf="code; else codeNotSet">
+  <div class="flex justify-end">
+    <button mat-stroked-button (click)="copyCode()">Copy</button>
+  </div>
+  <p class="whitespace-pre-wrap font-mono bg-slate-200 p-2 my-2 rounded">{{ code }}</p>
+</div>
 <ng-template #codeNotSet>
   <p class="text-center">Code not set</p>
 </ng-template>

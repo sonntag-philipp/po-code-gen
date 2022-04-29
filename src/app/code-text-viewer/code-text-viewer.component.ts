@@ -1,18 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: 'po-code-text-viewer',
   templateUrl: './code-text-viewer.component.html',
   styleUrls: ['./code-text-viewer.component.scss']
 })
-export class CodeTextViewerComponent implements OnInit {
+export class CodeTextViewerComponent {
 
   @Input()
   public code?: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public copyCode(): void {
+    if (this.code) {
+      navigator.clipboard.writeText(this.code);
+    }
   }
-
 }
