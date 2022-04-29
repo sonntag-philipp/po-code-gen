@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { SelectorModel } from '../models/selector-model';
 
 @Component({
   selector: 'po-selector-list-entry',
   templateUrl: './selector-list-entry.component.html',
-  styleUrls: ['./selector-list-entry.component.scss']
+  styleUrls: ['./selector-list-entry.component.scss'],
 })
-export class SelectorListEntryComponent implements OnInit {
+export class SelectorListEntryComponent {
+  @Input()
+  public model = new SelectorModel();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Output()
+  public modelChange = new EventEmitter<SelectorModel>();
 }
