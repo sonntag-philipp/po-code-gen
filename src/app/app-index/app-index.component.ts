@@ -22,10 +22,6 @@ export class AppIndexComponent implements OnInit {
     return "public class TestKlasse\n{\n    Backfisch;\n}";
   }
 
-  public namespaceName?: string;
-  public className?: string;
-  public baseClassName = "PageObjectBase";
-
   public classModel = new DotNetClassModel();
 
   constructor(
