@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DotNetClassModel } from '../models/dotnet-class-model';
 import { SelectorModel } from '../models/selector-model';
+import { ImplementationCodeService } from '../services/implementation-code.service';
 
 @Component({
   selector: 'po-app-index',
@@ -10,15 +11,15 @@ import { SelectorModel } from '../models/selector-model';
 export class AppIndexComponent implements OnInit {
 
   public get interfaceCode(): string {
-    return "public interface ITestKlasse\n{\n    Backfisch;\n}"
+    return "public interface ITestKlasse\n{\n    Backfisch;\n}";
   }
 
   public get implementationCode(): string {
-    return "public class TestKlasse\n{\n    Backfisch;\n}"
+    return this._implementationCodeService.generateCode(this.classModel);
   }
 
   public get factoryMethodCode(): string {
-    return "public class TestKlasse\n{\n    Backfisch;\n}"
+    return "public class TestKlasse\n{\n    Backfisch;\n}";
   }
 
   public namespaceName?: string;
@@ -27,7 +28,9 @@ export class AppIndexComponent implements OnInit {
 
   public classModel = new DotNetClassModel();
 
-  constructor() { }
+  constructor(
+    private readonly _implementationCodeService: ImplementationCodeService
+  ) { }
 
   public ngOnInit(): void {
   }
