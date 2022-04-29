@@ -9,4 +9,9 @@ export class SelectorModel {
   public generateLocator = true;
   public generateClickAsync = false;
   public generateIsVisibleAsync = false;
+  public generateFillAsync = false;
+  public generateCheckAsync = false;
+  public generateIsEnabledAsync = false;
+  public generateHasAttributeAsync = false;
+  public generateIsEditableAsync = false;
 }

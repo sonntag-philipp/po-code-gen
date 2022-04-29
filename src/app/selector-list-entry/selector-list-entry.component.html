@@ -21,10 +21,16 @@
       <input matInput [(ngModel)]="model.navigationPageObjectName">
     </mat-form-field>
     <div></div>
+    <mat-checkbox [(ngModel)]="model.useSelfSelector">Use class self selector</mat-checkbox>
+
     <mat-checkbox checked [(ngModel)]="model.generateLocator">Generate locator</mat-checkbox>
     <mat-checkbox checked [(ngModel)]="model.generateClickAsync">ClickAsync()</mat-checkbox>
-    <mat-checkbox [(ngModel)]="model.useSelfSelector">Use class self selector</mat-checkbox>
     <mat-checkbox [(ngModel)]="model.generateIsVisibleAsync">IsVisibleAsync()</mat-checkbox>
+    <mat-checkbox [(ngModel)]="model.generateFillAsync">FillAsync()</mat-checkbox>
+    <mat-checkbox [(ngModel)]="model.generateCheckAsync">CheckAsync()</mat-checkbox>
+    <mat-checkbox [(ngModel)]="model.generateIsEnabledAsync">IsEnabledAsync()</mat-checkbox>
+    <mat-checkbox [(ngModel)]="model.generateIsEditableAsync">IsEditableAsync()</mat-checkbox>
+    <mat-checkbox [(ngModel)]="model.generateHasAttributeAsync">HasAttributeAsync()</mat-checkbox>
   </div>
   <div class="flex justify-end">
     <button (click)="deleteSelector()" mat-stroked-button color="warn">Delete</button>

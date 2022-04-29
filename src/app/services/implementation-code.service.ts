@@ -52,10 +52,10 @@ export class ImplementationCodeService {
       code += "\n";
     }
     if (classModel.baseClassName) {
-      code += `    public class ${classModel.className}(IPage page) : base(page)\n`;
+      code += `    public ${classModel.className}(IPage page) : base(page)\n`;
     }
     else {
-      code += `    public class ${classModel.className}(IPage page)\n`;
+      code += `    public ${classModel.className}(IPage page)\n`;
     }
     code += `    {\n`;
     for (const selector of classModel.selectors) {
@@ -73,6 +73,31 @@ export class ImplementationCodeService {
     for (const selector of classModel.selectors) {
       if (selector.generateClickAsync) {
         code += this.generateClickMethod(selector);
+      }
+    }
+    for (const selector of classModel.selectors) {
+      if (selector.generateCheckAsync) {
+        code += this.generateCheckMethod(selector);
+      }
+    }
+    for (const selector of classModel.selectors) {
+      if (selector.generateFillAsync) {
+        code += this.generateFillMethod(selector);
+      }
+    }
+    for (const selector of classModel.selectors) {
+      if (selector.generateHasAttributeAsync) {
+        code += this.generateHasAttributeMethod(selector);
+      }
+    }
+    for (const selector of classModel.selectors) {
+      if (selector.generateIsEditableAsync) {
+        code += this.generateIsEditableMethod(selector);
+      }
+    }
+    for (const selector of classModel.selectors) {
+      if (selector.generateIsEnabledAsync) {
+        code += this.generateIsEnabledMethod(selector);
       }
     }
     return code;
@@ -131,6 +156,76 @@ export class ImplementationCodeService {
     else {
       code += `        return await Page.ClickAsync(${selector.propertyName});\n`;
     }
+    code += `    }\n`;
+    code += "\n";
+    return code;
+  }
+  
+  private generateFillMethod(selector: SelectorModel): string {
+    if (!selector.selector || !selector.propertyName) {
+      return "";
+    }
+
+    let code = "";
+    code += `    public async Task Fill${selector.propertyName}Async(string value)\n`;
+    code += `    {\n`;
+    code += `        await Page.FillAsync(${selector.propertyName}, value);\n`;
+    code += `    }\n`;
+    code += "\n";
+    return code;
+  }
+  
+  private generateCheckMethod(selector: SelectorModel): string {
+    if (!selector.selector || !selector.propertyName) {
+      return "";
+    }
+
+    let code = "";
+    code += `    public async Task Check${selector.propertyName}Async()\n`;
+    code += `    {\n`;
+    code += `        await Page.CheckAsync(${selector.propertyName});\n`;
+    code += `    }\n`;
+    code += "\n";
+    return code;
+  }
+  
+  private generateIsEditableMethod(selector: SelectorModel): string {
+    if (!selector.selector || !selector.propertyName) {
+      return "";
+    }
+
+    let code = "";
+    code += `    public async Task<bool> Is${selector.propertyName}EditableAsync()\n`;
+    code += `    {\n`;
+    code += `        return await Page.IsEditableAsync(${selector.propertyName});\n`;
+    code += `    }\n`;
+    code += "\n";
+    return code;
+  }
+  
+  private generateIsEnabledMethod(selector: SelectorModel): string {
+    if (!selector.selector || !selector.propertyName) {
+      return "";
+    }
+
+    let code = "";
+    code += `    public async Task<bool> Is${selector.propertyName}EnabledAsync()\n`;
+    code += `    {\n`;
+    code += `        return await Page.IsEnabledAsync(${selector.propertyName});\n`;
+    code += `    }\n`;
+    code += "\n";
+    return code;
+  }
+  
+  private generateHasAttributeMethod(selector: SelectorModel): string {
+    if (!selector.selector || !selector.propertyName) {
+      return "";
+    }
+
+    let code = "";
+    code += `    public async Task<bool> ${selector.propertyName}HasAttributeAsync(string attribute)\n`;
+    code += `    {\n`;
+    code += `        return await Page.HasAttributeAsync(${selector.propertyName}, attribute);\n`;
     code += `    }\n`;
     code += "\n";
     return code;

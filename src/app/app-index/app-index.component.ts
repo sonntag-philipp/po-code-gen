@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DotNetClassModel } from '../models/dotnet-class-model';
 import { SelectorModel } from '../models/selector-model';
 import { ImplementationCodeService } from '../services/implementation-code.service';
@@ -28,7 +28,15 @@ export class AppIndexComponent implements OnInit {
     private readonly _implementationCodeService: ImplementationCodeService
   ) { }
 
+  @HostListener('window:beforeunload', ['$event'])
+  public beforeUnloadHandler() {
+    localStorage.setItem('classModel', JSON.stringify(this.classModel));
+  }
+
   public ngOnInit(): void {
+    if (localStorage.getItem('classModel')) {
+      this.classModel = JSON.parse(localStorage.getItem('classModel')!);
+    }
   }
 
   public addSelector(): void {
