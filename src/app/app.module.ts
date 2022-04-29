@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppIndexComponent } from './app-index/app-index.component';
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { CodeTextViewerComponent } from './code-text-viewer/code-text-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppIndexComponent
+    AppIndexComponent,
+    CodeTextViewerComponent
   ],
   imports: [
     BrowserModule,
