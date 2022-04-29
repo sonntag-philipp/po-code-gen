@@ -26,6 +26,6 @@
     <mat-checkbox #generateImplementation [(ngModel)]="model.generateIsVisibleAsync">IsVisibleAsync()</mat-checkbox>
   </div>
   <div class="flex justify-end">
-    <button mat-stroked-button color="warn">Delete</button>
+    <button (click)="deleteSelector()" mat-stroked-button color="warn">Delete</button>
   </div>
 </mat-expansion-panel>

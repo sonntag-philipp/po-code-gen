@@ -26,30 +26,25 @@
           <form #settingsForm="ngForm"  class="flex flex-col">
             <mat-form-field appearance="outline">
               <mat-label>Namespace</mat-label>
-              <input name="namespaceName" matInput [(ngModel)]="namespaceName" required>
+              <input name="namespaceName" matInput [(ngModel)]="classModel.namespaceName" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Class</mat-label>
-              <input name="className" matInput [(ngModel)]="className" required>
+              <input name="className" matInput [(ngModel)]="classModel.className" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Base class</mat-label>
-              <input name="baseClassName" matInput [(ngModel)]="baseClassName" required>
+              <input name="baseClassName" matInput [(ngModel)]="classModel.baseClassName" required>
             </mat-form-field>
           </form>
         </mat-expansion-panel>
       </mat-accordion>
       <div class="mb-28">
         <div class="p-4">
-          <button mat-stroked-button color="primary">Add selector</button>
+          <button (click)="addSelector()" mat-stroked-button color="primary">Add selector</button>
         </div>
         <mat-accordion displayMode="flat">
-          <po-selector-list-entry></po-selector-list-entry>
-          <po-selector-list-entry></po-selector-list-entry>
-          <po-selector-list-entry></po-selector-list-entry>
-          <po-selector-list-entry></po-selector-list-entry>
-          <po-selector-list-entry></po-selector-list-entry>
-          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry *ngFor="let selector of classModel.selectors" (delete)="deleteSelector(selector)" [model]="selector"></po-selector-list-entry>
         </mat-accordion>
       </div>
     </div>

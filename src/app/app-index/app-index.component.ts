@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DotNetClassModel } from '../models/dotnet-class-model';
+import { SelectorModel } from '../models/selector-model';
 
 @Component({
   selector: 'po-app-index',
@@ -23,9 +25,22 @@ export class AppIndexComponent implements OnInit {
   public className?: string;
   public baseClassName = "PageObjectBase";
 
+  public classModel = new DotNetClassModel();
+
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+  }
+
+  public addSelector(): void {
+    this.classModel.selectors.push(new SelectorModel());
+  }
+
+  public deleteSelector(selector: SelectorModel): void {
+    const index = this.classModel.selectors.indexOf(selector);
+    if (index > -1) {
+      this.classModel.selectors.splice(index, 1);
+    }
   }
 
 }

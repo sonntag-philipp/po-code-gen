@@ -12,5 +12,9 @@ export class SelectorListEntryComponent {
   public model = new SelectorModel();
 
   @Output()
-  public modelChange = new EventEmitter<SelectorModel>();
+  public delete = new EventEmitter<SelectorModel>();
+
+  public deleteSelector(): void {
+    this.delete.emit(this.model);
+  }
 }
