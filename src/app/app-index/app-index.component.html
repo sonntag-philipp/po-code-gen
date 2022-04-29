@@ -5,7 +5,7 @@
     </mat-toolbar>
     <div class="p-4 border-r">
       <mat-accordion>
-        <mat-expansion-panel expanded="true">
+        <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Output Configuration
@@ -13,16 +13,30 @@
           </mat-expansion-panel-header>
           <div class="flex flex-col">
             <mat-checkbox #generateImplementation checked="true">Generate implementation</mat-checkbox>
-            <mat-checkbox #generateInterface checked="false">Generate interface</mat-checkbox>
-            <mat-checkbox #generateFactoryMethod checked="false">Generate factory method</mat-checkbox>
+            <mat-checkbox #generateInterface checked="true">Generate interface</mat-checkbox>
+            <mat-checkbox #generateFactoryMethod checked="true">Generate factory method</mat-checkbox>
           </div>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel expanded>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Variable Settings
             </mat-panel-title>
           </mat-expansion-panel-header>
+          <form #settingsForm="ngForm"  class="flex flex-col">
+            <mat-form-field appearance="outline">
+              <mat-label>Namespace</mat-label>
+              <input name="namespaceName" matInput [(ngModel)]="namespaceName" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Class</mat-label>
+              <input name="className" matInput [(ngModel)]="className" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Base class</mat-label>
+              <input name="baseClassName" matInput [(ngModel)]="baseClassName" required>
+            </mat-form-field>
+          </form>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
