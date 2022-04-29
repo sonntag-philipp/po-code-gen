@@ -1,0 +1,31 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-description>
+      CowabungaPage.SelectorOfDoom
+    </mat-panel-description>
+    <mat-panel-title>
+      #selector-of-doom
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form class="grid grid-cols-2 gap-2">
+    <mat-form-field appearance="outline">
+      <mat-label>Selector</mat-label>
+      <input name="baseClassName" matInput required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Property Name</mat-label>
+      <input name="baseClassName" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Navigation Page Object</mat-label>
+      <input name="baseClassName" matInput>
+    </mat-form-field>
+    <div></div>
+    <mat-checkbox #generateImplementation checked>Generate locator</mat-checkbox>
+    <mat-checkbox #generateImplementation checked>ClickAsync()</mat-checkbox>
+    <mat-checkbox #generateImplementation>IsVisibleAsync()</mat-checkbox>
+  </form>
+  <div class="flex justify-end">
+    <button mat-stroked-button color="warn">Delete</button>
+  </div>
+</mat-expansion-panel>

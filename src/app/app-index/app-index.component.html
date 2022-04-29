@@ -1,10 +1,10 @@
 <div class="h-full grid grid-cols-2 grid-rows-1">
-  <div class="grid grid-rows-[min-content,auto] h-full">
+  <div class="grid grid-rows-[min-content,auto] h-screen max-h-screen">
     <mat-toolbar color="primary">
       <span>po-code-gen</span>
     </mat-toolbar>
-    <div class="p-4 border-r">
-      <mat-accordion>
+    <div class="p-4 border-r overflow-auto">
+      <mat-accordion displayMode="flat">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -12,12 +12,12 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="flex flex-col">
-            <mat-checkbox #generateImplementation checked="true">Generate implementation</mat-checkbox>
-            <mat-checkbox #generateInterface checked="true">Generate interface</mat-checkbox>
-            <mat-checkbox #generateFactoryMethod checked="true">Generate factory method</mat-checkbox>
+            <mat-checkbox #generateImplementation checked>Generate implementation</mat-checkbox>
+            <mat-checkbox #generateInterface checked>Generate interface</mat-checkbox>
+            <mat-checkbox #generateFactoryMethod checked>Generate factory method</mat-checkbox>
           </div>
         </mat-expansion-panel>
-        <mat-expansion-panel expanded>
+        <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Variable Settings
@@ -39,13 +39,26 @@
           </form>
         </mat-expansion-panel>
       </mat-accordion>
+      <div class="mb-28">
+        <div class="p-4">
+          <button mat-stroked-button color="primary">Add selector</button>
+        </div>
+        <mat-accordion displayMode="flat">
+          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry></po-selector-list-entry>
+          <po-selector-list-entry></po-selector-list-entry>
+        </mat-accordion>
+      </div>
     </div>
   </div>
-  <div class="grid grid-rows-[min-content,auto] h-full">
+  <div class="grid grid-rows-[min-content,auto] h-screen max-h-screen">
     <mat-toolbar color="primary">
       <span>output</span>
     </mat-toolbar>
-    <div class="p-4 border-l">
+    <div class="p-4 border-l overflow-auto">
       <div class="border-b last:border-none" *ngIf="generateImplementation.checked">
         <h1>Implementation:</h1>
         <po-code-text-viewer [code]="implementationCode"></po-code-text-viewer>
